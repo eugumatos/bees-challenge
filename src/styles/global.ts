@@ -6,11 +6,16 @@ export const GlobalStyle = createGlobalStyle`
 
     --background: #FFFEF0;
     --yellow: #F2EC54;
-    --green: #33CC95;
+    --blue-100: #ebf8ff;
+    --blue-300:  #3172b7;
+    --green-100: #e6fffa;
+    --green-400: #2e656a;
     --iris-100: #5D5FEF;
     --gray-300: #D4D4D8;
     --gray-600: #52525B;
-    --red-700:  #cc0000;
+    --red-700: #cc0000;
+    --red-500: #c53030;
+    --red-100: #fddede;
   }
   
   * {

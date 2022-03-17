@@ -34,7 +34,7 @@ export async function getBreweries(): Promise<GetBrewerieResponse> {
       id: brewerie.id,
       name: filterDesc(brewerie.name),
       brewery_type: brewerie.brewery_type,
-      address: `${brewerie.city}, ${filterDesc(brewerie.street)} - ${brewerie.country}`,
+      address: `${brewerie.city}, ${brewerie.street} - ${brewerie.country}`,
       postal_code: brewerie.postal_code,
       phone: brewerie.phone
     };

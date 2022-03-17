@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { UserProvider } from './user';
+import { ToastProvider } from './toast';
 
 type AppProviderProps = {
   children: ReactNode;
@@ -9,7 +10,7 @@ type AppProviderProps = {
 export function AppProvider({ children }: AppProviderProps) {
   return (
     <UserProvider>
-      {children}
+      <ToastProvider>{children}</ToastProvider>
     </UserProvider>
   );
 }

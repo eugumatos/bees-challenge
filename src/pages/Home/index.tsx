@@ -4,11 +4,14 @@ import { getBreweries, IBrewerie } from '../../services/breweries';
 import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
 import { Tag } from '../../components/Tag'; 
+import { useToast } from '../../hooks/toast';
 import Trash from '../../assets/icons/trash.svg';
 
 import { Container, Content, CardContent, ContainerTag, ContainerLoading } from './styles';
 
 export function Home() {
+  const { addToast } = useToast();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [breweries, setBreweries] = useState<IBrewerie[]>([]);
 
@@ -37,6 +40,12 @@ export function Home() {
     const filterBreweries = previusBreweries.filter((brewerie: IBrewerie) => brewerie.id !== id);
 
     setBreweries(filterBreweries);
+
+    addToast({
+      type: "success",
+      title: "Successfully",
+      description: "Brewery removed"
+    });
   }
 
   useEffect(() => {
