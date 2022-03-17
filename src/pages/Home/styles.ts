@@ -11,10 +11,11 @@ export const Container = styled.main`
 
 export const Content = styled.div`
   width: 100%;
+  height: 80vh;
   padding: 2rem 6rem;
 
   display flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center; 
   flex-wrap: wrap;
 
@@ -54,3 +55,19 @@ export const ContainerTag = styled.div`
   flex-wrap: wrap;
 `;
 
+export const ContainerLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Controls = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  button + button {
+    margin-left: 0.8rem;
+  }
+`;

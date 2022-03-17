@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: min-content;
   margin: 5px 10px 20px 0;
   padding: 5px 2rem 5px 5px;
   background: var(--yellow);
@@ -13,6 +12,11 @@ export const Container = styled.div`
   img {
     height: 20px;
     width: 23px;
+  }
+
+  input {
+    max-width: 6rem;
+    outline: none;
   }
 
   span {

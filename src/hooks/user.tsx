@@ -1,18 +1,18 @@
-import { ReactNode, createContext, useCallback, useState } from 'react';
+import { ReactNode, createContext, useCallback, useState, useContext } from 'react';
 
 type UserProviderProps = {
   children?: ReactNode;
 }
 
-export interface UserContextData {
+interface UserContextData {
   newUser: (name: string) => void;
   removeUser: () => void;
   user: string;
 }
 
-export const UserContext = createContext<UserContextData>({} as UserContextData);
+const UserContext = createContext<UserContextData>({} as UserContextData);
   
-export function UserProvider({ children }: UserProviderProps) {
+function UserProvider({ children }: UserProviderProps) {
   const [user, setUser] = useState<string>(() => {
     const storagedUser = localStorage.getItem('@BeesChallenge:user');
 
@@ -39,3 +39,15 @@ export function UserProvider({ children }: UserProviderProps) {
    </UserContext.Provider>
  );
 }
+
+function useUser(): UserContextData {
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error('useFullName must be used within a UserProvider'); 
+  }
+
+  return context;
+}
+
+export { UserProvider, useUser };

@@ -7,8 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     --background: #FFFEF0;
     --yellow: #F2EC54;
     --green: #33CC95;
+    --iris-100: #5D5FEF;
     --gray-300: #D4D4D8;
     --gray-600: #52525B;
+    --red-700:  #cc0000;
   }
   
   * {

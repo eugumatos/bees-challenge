@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import { useUser } from '../../hooks/useUser';
+import { useUser } from '../../hooks/user';
 import ArrowCircleLeft from '../../assets/icons/arrow-circle-left.svg';
 import { Container, BackArea } from './styles';
 
@@ -8,9 +8,9 @@ export function Header() {
 
   const { user, removeUser } = useUser();
 
-  const backHome = () => {
+  const goBack = () => {
     removeUser();
-    history.push('/');
+    history.push('/')
   }
 
   return (
@@ -19,7 +19,7 @@ export function Header() {
         <img 
           src={ArrowCircleLeft} 
           alt="arrow-circle-left"
-          onClick={backHome} 
+          onClick={goBack}
         />
         <span>Go Back</span>
       </BackArea>

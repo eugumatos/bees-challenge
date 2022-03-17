@@ -1,7 +1,11 @@
-import { ReactNode } from 'react';
+import { ReactNode, ButtonHTMLAttributes } from 'react';
 import { Container } from './styles'; 
 
-import { ButtonProps } from '../../types'
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: React.ReactNode;
+  variant?: string;
+  size?: string;
+} 
 
 export function Button({ 
   variant,
