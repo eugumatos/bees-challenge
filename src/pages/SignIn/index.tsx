@@ -7,8 +7,9 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Form/Input';
 import { Checkbox } from '../../components/Form/Checkbox';
 import { useUser } from '../../hooks/user';
+import Logo from '../../assets/logo.svg';
 
-import { Container, Content, Form, BeeLogo } from './styles';
+import { Container, Content, Form } from './styles';
 
 interface FormData {
   fullName: string;
@@ -59,7 +60,7 @@ export function SignIn() {
         </Form>
       </Content>
 
-      <BeeLogo />
+      <img src={Logo} alt="logo" />
     </Container>
   );
 }
