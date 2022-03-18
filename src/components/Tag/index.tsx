@@ -25,13 +25,11 @@ const icons = {
 export function Tag({ icon, name, getTag }: TagProps) {
   const [tag, setTag] = useState<string>('');
   const [active, setActive] = useState<boolean>(false);
-  const [hiddenIcon, setHiddenIcon] = useState<boolean>(false);
 
   const addTag = () => {
 		if (tag !== "" && getTag) {
       getTag(tag);
       setActive(false);
-      setHiddenIcon(true);
 		}
 	};
 
@@ -47,9 +45,7 @@ export function Tag({ icon, name, getTag }: TagProps) {
 
   return (
     <Container icon={icon}>
-      {}
       <img 
-        hidden={hiddenIcon}
         src={icons[!active ? icon : 'check']} 
         onClick={handleClickTag}
         alt={icon} 
