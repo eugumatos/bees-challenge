@@ -12,6 +12,7 @@ export const Container = styled.header`
 
   h2 {
     text-align: end;
+    font-weight: 100;
   }
 `;
 

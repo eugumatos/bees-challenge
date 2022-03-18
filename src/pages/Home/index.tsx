@@ -31,8 +31,9 @@ export function Home() {
         setIsLoading(false);
 
         addToast({
-          type: 'info',
+          type: "info",
           title: `Welcome, ${user}!`,
+          description: "Bellow are some breweries"        
         });
       }
     } catch (error) {
@@ -94,15 +95,16 @@ export function Home() {
                   <h4>{brewerie.name}</h4>
       
                   <div>
+                    <p>{brewerie.street}</p>
                     <p>{brewerie.address}</p>
                   </div>
       
                   <ContainerTag>
-                    <Tag type="chart" name={brewerie.brewery_type} />
-                    <Tag type="location" name={brewerie.postal_code} />
-                    <Tag type="phone" name={brewerie.phone} />
+                    <Tag icon="chart" name={brewerie.brewery_type} />
+                    <Tag icon="location" name={brewerie.postal_code} />
+                    <Tag icon="phone" name={brewerie.phone} />
                     <Tag 
-                      type="plus" 
+                      icon="plus" 
                       name={brewerie.tag ? brewerie.tag : "add more"} 
                       getTag={(tag) => addTag(brewerie.id, tag)} 
                     />

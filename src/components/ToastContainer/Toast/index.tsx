@@ -22,7 +22,7 @@ export function Toast({ message, style }: ToastProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(message.id);
-    }, 10000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer);
@@ -30,7 +30,7 @@ export function Toast({ message, style }: ToastProps) {
   }, [removeToast, message.id]);
 
   return (
-    <Container type={message.type} hasDescription={!!message.description} style={style}>
+    <Container type={message.type} style={style}>
        {icons[message.type || 'info']}
         <div>
           <strong>{message.title}</strong>

@@ -8,7 +8,7 @@ import CheckCircle from '../../assets/icons/check-circle.svg';
 import { Container } from './styles';
 
 interface TagProps {
-  type: 'chart' | 'location' | 'phone' | 'plus' | 'check';
+  icon: 'chart' | 'location' | 'phone' | 'plus' | 'check';
   name: string;
   onClick?: () => void;
   getTag?: (tag: string) => void;
@@ -22,7 +22,7 @@ const icons = {
   check: CheckCircle
 };
 
-export function Tag({ type, name, getTag }: TagProps) {
+export function Tag({ icon, name, getTag }: TagProps) {
   const [tag, setTag] = useState<string>('');
   const [active, setActive] = useState<boolean>(false);
 
@@ -34,7 +34,7 @@ export function Tag({ type, name, getTag }: TagProps) {
 	};
 
   const handleClickTag = () => {
-    if (type === 'plus') {
+    if (icon === 'plus') {
       setActive(!active);
 
       if (active) {
@@ -44,11 +44,11 @@ export function Tag({ type, name, getTag }: TagProps) {
   }
 
   return (
-    <Container>
+    <Container icon={icon}>
       <img 
-        src={icons[!active ? type : 'check']} 
+        src={icons[!active ? icon : 'check']} 
         onClick={handleClickTag}
-        alt={type} 
+        alt={icon} 
       />
       { active ? (
         <input 

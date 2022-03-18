@@ -33,9 +33,10 @@ export async function getBreweries(): Promise<GetBrewerieResponse | void> {
     const breweries = data.map((brewerie: IBrewerie) => {
       return {
         id: brewerie.id,
-        name: filterDesc(brewerie.name),
+        name: brewerie.name,
         brewery_type: brewerie.brewery_type,
-        address: `${brewerie.city}, ${brewerie.street} - ${brewerie.country}`,
+        street:  brewerie.street,  
+        address: `${brewerie.city}, ${brewerie.state} - ${brewerie.country}`,
         postal_code: brewerie.postal_code,
         phone: brewerie.phone
       };

@@ -6,16 +6,14 @@ export const Container = styled.main`
   align-items: center; 
 
   background: var(--background);
-  height: 100vh;
 `;
 
 export const Content = styled.div`
   width: 100%;
-  height: 80vh;
   padding: 2rem 6rem;
 
   display flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center; 
   flex-wrap: wrap;
 
@@ -23,15 +21,20 @@ export const Content = styled.div`
     margin: 1rem;
   }
 
-  @media (max-width: 840px) {
+  @media (max-width: 1480px) {
     padding: 2rem;
     justify-content: center;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0;
   }
 `;
 
 export const CardContent = styled.div`
   position: relative;
   padding: 1rem;
+  flex: 1;
 
   & > div {
     margin-top: 1rem;

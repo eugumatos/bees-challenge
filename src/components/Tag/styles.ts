@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+type ContainerProps = {
+  icon: 'chart' | 'location' | 'phone' | 'plus' | 'check';
+}
+
+export const Container = styled.div<ContainerProps>`
   margin: 5px 10px 20px 0;
   padding: 5px 2rem 5px 5px;
   background: var(--yellow);
@@ -12,6 +16,10 @@ export const Container = styled.div`
   img {
     height: 20px;
     width: 23px;
+
+    ${(props) => props.icon === "plus" && css`
+      cursor: pointer;
+    `}
   }
 
   input {
