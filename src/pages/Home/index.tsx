@@ -1,27 +1,50 @@
 import { useState, useEffect } from 'react';
-import { DotLoader } from 'react-spinners';
+import { useHistory } from 'react-router-dom';
 import { getBreweries, IBrewerie } from '../../services/breweries';
 import { Header } from '../../components/Header';
 import { Card } from '../../components/Card';
 import { Tag } from '../../components/Tag'; 
+import { useUser } from '../../hooks/user'
 import { useToast } from '../../hooks/toast';
+import { Loading } from '../../components/Loading';
 import Trash from '../../assets/icons/trash.svg';
 
-import { Container, Content, CardContent, ContainerTag, ContainerLoading } from './styles';
+import { Container, Content, CardContent, ContainerTag } from './styles';
 
 export function Home() {
+  const history = useHistory();
+
   const { addToast } = useToast();
+  const { user, removeUser } = useUser();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [breweries, setBreweries] = useState<IBrewerie[]>([]);
 
   const getAllBreweries = async () => {
-    setIsLoading(true);
+    try {
+      setIsLoading(true);
 
-    const response = await getBreweries();
+      const response = await getBreweries();
+  
+      if (response) {
+        setBreweries(response.breweries);
+        setIsLoading(false);
 
-    setBreweries(response.breweries);
-    setIsLoading(false);
+        addToast({
+          type: 'info',
+          title: `Welcome, ${user}!`,
+        });
+      }
+    } catch (error) {
+      addToast({
+        type: "error",
+        title: "Error",
+        description: (error as Error).message
+      });
+
+      removeUser();
+      history.push('/');
+    }
   }
 
   const addTag = (id: string, tag: string) => {
@@ -58,9 +81,7 @@ export function Home() {
 
       <Content>
       { isLoading ? (
-          <ContainerLoading>
-            <DotLoader size={70} color="#5D5FEF" />
-          </ContainerLoading>
+         <Loading />
         ) : (
           <>
             { breweries.map((brewerie) => (

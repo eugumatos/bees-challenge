@@ -55,12 +55,6 @@ export const ContainerTag = styled.div`
   flex-wrap: wrap;
 `;
 
-export const ContainerLoading = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Controls = styled.div`
   width: 100%;
   display: flex;

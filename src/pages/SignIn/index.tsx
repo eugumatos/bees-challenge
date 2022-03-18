@@ -7,7 +7,6 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Form/Input';
 import { Checkbox } from '../../components/Form/Checkbox';
 import { useUser } from '../../hooks/user';
-import { useToast } from '../../hooks/toast';
 
 import { Container, Content, Form, BeeLogo } from './styles';
 
@@ -25,8 +24,7 @@ const validateSchema = yup.object().shape({
 export function SignIn() {
   const history = useHistory();
   
-  const { addToast } = useToast();
-  const { user, newUser } = useUser();
+  const { newUser } = useUser();
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({
     resolver: yupResolver(validateSchema),
@@ -35,11 +33,6 @@ export function SignIn() {
 
   const handleCreateSection: SubmitHandler<FormData> = (data) => {
     newUser(data.fullName);
-    addToast({
-      type: 'info',
-      title: `Welcome, ${data.fullName}`,
-    });
-
     history.push('/home')
   }
 

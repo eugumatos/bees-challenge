@@ -22,26 +22,30 @@ type GetBrewerieResponse = {
   breweries: IBrewerie[];
 }
 
-export async function getBreweries(): Promise<GetBrewerieResponse> {
-  const { data } = await api.get('breweries', {
-    params: {
-      per_page: 6
-    }
-  });
+export async function getBreweries(): Promise<GetBrewerieResponse | void> {
+  try {
+    const { data } = await api.get('breweries', {
+      params: {
+        per_page: 6
+      }
+    });
+    
+    const breweries = data.map((brewerie: IBrewerie) => {
+      return {
+        id: brewerie.id,
+        name: filterDesc(brewerie.name),
+        brewery_type: brewerie.brewery_type,
+        address: `${brewerie.city}, ${brewerie.street} - ${brewerie.country}`,
+        postal_code: brewerie.postal_code,
+        phone: brewerie.phone
+      };
+    });
   
-  const breweries = data.map((brewerie: IBrewerie) => {
     return {
-      id: brewerie.id,
-      name: filterDesc(brewerie.name),
-      brewery_type: brewerie.brewery_type,
-      address: `${brewerie.city}, ${brewerie.street} - ${brewerie.country}`,
-      postal_code: brewerie.postal_code,
-      phone: brewerie.phone
-    };
-  });
-
-  return {
-    breweries
-  };
+      breweries
+    }; 
+  } catch (error) {
+    throw new Error('Error loading breweries.');
+  }
 }
 
